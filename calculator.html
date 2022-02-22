@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>htmlpage</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="calculator.js"></script>
+
+</head>
+<body>
+<table>
+
+<tr>
+<td>First Number:</td>
+<td><input type="number" id="fnum"></td>
+<td><input type="radio" name="math" value="add">:ADD</td>
+
+</tr>
+
+<tr><td>Second Number:</td>
+<td><input type="number" id="snum"></td>
+<td><input type="radio" name="math" value="sub">:SUB</td>
+</tr>
+
+<tr>
+<td></td>
+<td><input type="button" id="calculate" value="calculate" onclick="calculate()"><input type="button" value="clear" id="clear"></td>
+<td><input type="radio" name="math" value="multi">:MULTI</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><input type="radio" name="math" value="div">:DIV</td>
+</tr>
+
+
+</table>
+<lable>Result:</lable><input type="number" id="ans"><br><br>
+
+
+</body>
+
+</html>
