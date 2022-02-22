@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>my page</title>
+
+<script src="formvalidation.js"></script>
+</head>
+
+<body>
+
+<form>
+
+<h1>My First Heading</h1>
+
+<p>My first paragraph.</p>
+
+Enter your name:
+<input type="text" id="name"><br><br>
+
+ Enter your address:
+<input type="text" id="address"><br><br>
+
+enter your adharno:
+<input type="text" id="adharno"><br><br>
+
+<lable>Gender:</lable>
+<input type="radio" name="gender" id="genderf"> :Female
+<input type="radio" name="gender" id="genderm">: male<br><br>
+
+<lable>Subject</lable><br><br>
+Biology:<input type="checkbox" id="subBIO">
+Physics:<input type="checkbox" id="subPHY">
+Chemistry:<input type="checkbox" id="subCHE">
+English:<input type="checkbox"id="subENG"><br><br>
+
+<input type="button" id="btn" value="submit" onclick="validateform(this.form)"><br><br>
+
+</form>
+
+
+</body>
+</html>
