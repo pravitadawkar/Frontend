@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+        <button id="get_record">Get record</button>
+        <table id="tbl" class="table container-md">
+
+            <thead class="thead-primary">
+            <tr>
+            <td scope="col">Username</td>
+            <td scope="col">Address</td>
+            <td scope="col">Company</td>
+            </tr>
+            </thead>
+            
+            <tbody id="tbody">
+            </tbody>
+            
+            </table>
+            <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">User Address</h4>
+            </div>
+            <div class="modal-body">
+              <Label id="userAddress"></Label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <script>
+                function get_address(id)
+                {
+                    $.get("https://jsonplaceholder.typicode.com/users?id="+id,function(data){
+                        $("#userAddress").html(data[0].address.city)
+                        $('#myModal').modal('show');
+                        })
+
+                }
+                function get_company(id)
+                {
+                    $.get("https://jsonplaceholder.typicode.com/users?id="+id,function(data){
+                        $("#userAddress").html(data[0].company.name);
+                        $('#myModal').modal('show');
+                            
+                        })
+
+                }
+                $("document").ready(function(){
+                    alert("");
+                    $("#get_record").click(function(){
+                        $.get("https://jsonplaceholder.typicode.com/users",function(data){
+                            $.each(data, function (index,item) {
+                            $("#tbl").append('<tr><td>'+item.username+'</td><td><button onclick="get_address('+item.id+')">users Address</button></td><td><button onclick="get_company('+item.id+')">users company</button></td></tr>');
+              
+                            })
+                        })
+                    })
+
+                })
+            </script>
+        
+    </body>
+</html>
