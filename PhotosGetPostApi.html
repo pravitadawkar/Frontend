@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    </head>
+    <body>
+        <h5 style="font-size: large; font-weight: bolder;color: blue;" class="h5">This is albums </h5>
+        <button id="get_record" style="border: 3px solid gray; ; cursor: pointer;" class="btn btn-success">Get record</button>
+        <div class="container-sm">
+        <div style="float:left;">
+            <table id="tbl" class="table container-sm">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <div style="float:right; margin: 50px;" >
+            <h3 style="color: red; margin-right: 150px;margin-top: 0%;"><u>photos</u></h3>
+            <div id="showPhoto">
+
+            </div>
+        </div> 
+        </div>
+        <script>
+             function get_photos(id)
+                {
+                    $.get("https://jsonplaceholder.typicode.com/photos?id="+id,function(data){
+                        $("#showPhoto").html(data[0].url);
+                        console.log(data[0].url);
+                        })
+
+                }
+             $("document").ready(function(){
+                    //alert("");
+                    $("#get_record").click(function(){
+                        $.get("https://jsonplaceholder.typicode.com/photos",function(data){
+                            $.each(data, function (index,item) {
+                            $("#tbl").append('<tr><td>'+item.id+'</td><td><button onclick="get_photos('+item.id+')">'+ item.title +'</button></td></tr>');
+              
+                            })
+                        })
+                    })
+
+                })
+        </script>
+    </body>
+</html>
